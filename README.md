@@ -1,3 +1,72 @@
+```mermaid
+graph TD
+    %% Definições de estilo
+    classDef vpc fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef subnet fill:#d1e0e0,stroke:#333,stroke-width:1px
+    classDef gateway fill:#ffcc99,stroke:#333,stroke-width:1px
+    classDef routeTable fill:#ccffcc,stroke:#333,stroke-width:1px
+    classDef nat fill:#ffb366,stroke:#333,stroke-width:1px
+    classDef internet fill:#cce5ff,stroke:#333,stroke-width:1px
+    
+    %% VPC
+    VPC["VPC<br/>(172.31.0.0/16)"] 
+    
+    %% Subnets
+    PubSub1["Subnet Pública EC2 #1<br/>172.31.1.0/24<br/>us-east-1a"]
+    PubSub2["Subnet Pública EC2 #2<br/>172.31.2.0/24<br/>us-east-1b"]
+    PrivSub1["Subnet Privada RDS #1<br/>172.31.101.0/24<br/>us-east-1a"]
+    PrivSub2["Subnet Privada RDS #2<br/>172.31.102.0/24<br/>us-east-1b"]
+    
+    %% Internet Gateway
+    IGW["Internet Gateway"]
+    
+    %% Route Tables
+    PubRT["Route Table Pública<br/>(0.0.0.0/0 → Internet Gateway)"]
+    PrivRT1["Route Table Privada #1<br/>(0.0.0.0/0 → NAT Gateway #1)"]
+    PrivRT2["Route Table Privada #2<br/>(0.0.0.0/0 → NAT Gateway #2)"]
+    
+    %% NAT Gateways e Elastic IPs
+    EIP1["Elastic IP #1"]
+    EIP2["Elastic IP #2"]
+    NAT1["NAT Gateway #1"]
+    NAT2["NAT Gateway #2"]
+    
+    %% Internet
+    Internet["Internet"]
+    
+    %% Conexões
+    VPC --> PubSub1
+    VPC --> PubSub2
+    VPC --> PrivSub1
+    VPC --> PrivSub2
+    VPC --> IGW
+    
+    PubSub1 --> PubRT
+    PubSub2 --> PubRT
+    
+    PrivSub1 --> PrivRT1
+    PrivSub2 --> PrivRT2
+    
+    PubRT --> IGW
+    
+    EIP1 --> NAT1
+    EIP2 --> NAT2
+    
+    NAT1 --> PrivRT1
+    NAT2 --> PrivRT2
+    
+    IGW --> Internet
+    
+    %% Aplicando classes de estilo
+    class VPC vpc
+    class PubSub1,PubSub2,PrivSub1,PrivSub2 subnet
+    class IGW gateway
+    class PubRT,PrivRT1,PrivRT2 routeTable
+    class NAT1,NAT2,EIP1,EIP2 nat
+    class Internet internet
+```
+
+
 # Projeto de Infraestrutura como Código com Terraform na AWS
 
 Este projeto utiliza o Terraform para provisionar e gerenciar recursos na AWS de forma automatizada e declarativa.
