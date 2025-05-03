@@ -49,8 +49,8 @@ resource "aws_internet_gateway" "main" {
   )
 }
 
-resource "aws_eip" "rds_private_eip" {
-  count = length(var.rds_private_subnets)
+resource "aws_eip" "to_nat" {
+  count = length(var.ec2_public_subnets)
   domain = "vpc"
   tags = merge(
     var.tags,
@@ -60,17 +60,17 @@ resource "aws_eip" "rds_private_eip" {
   ) 
 }
 
-resource "aws_nat_gateway" "rds_private_nat" {
-  count = length(var.rds_private_subnets)
-  allocation_id = aws_eip.rds_private_eip[count.index].id
-  subnet_id = aws_subnet.rds_private[count.index].id
+resource "aws_nat_gateway" "main" {
+  count = length(var.ec2_public_subnets)
+  allocation_id = aws_eip.to_nat[count.index].id
+  subnet_id = aws_subnet.ec2_public[count.index].id
   tags = merge(
     var.tags,
     {
       Name = "rds-private-nat-${count.index + 1}"
     }
   )
-  depends_on = [aws_internet_gateway.main, aws_eip.rds_private_eip]
+  depends_on = [aws_internet_gateway.main, aws_eip.to_nat]
 }
 
 resource "aws_route_table" "ec2_public_rt" {
