@@ -1,12 +1,12 @@
 ```mermaid
 graph TD
     %% Definições de estilo
-    classDef vpc fill:#f9f9f9,stroke:#333,stroke-width:2px
-    classDef subnet fill:#d1e0e0,stroke:#333,stroke-width:1px
-    classDef gateway fill:#ffcc99,stroke:#333,stroke-width:1px
-    classDef routeTable fill:#ccffcc,stroke:#333,stroke-width:1px
-    classDef nat fill:#ffb366,stroke:#333,stroke-width:1px
-    classDef internet fill:#cce5ff,stroke:#333,stroke-width:1px
+    classDef vpc fill:#f9f9f9,stroke:#333,stroke-width:2px,color:black
+    classDef subnet fill:#d1e0e0,stroke:#333,stroke-width:1px,color:black
+    classDef gateway fill:#ffcc99,stroke:#333,stroke-width:1px,color:black
+    classDef routeTable fill:#ccffcc,stroke:#333,stroke-width:1px,color:black
+    classDef nat fill:#ffb366,stroke:#333,stroke-width:1px,color:black
+    classDef internet fill:#cce5ff,stroke:#333,stroke-width:1px,color:black
     
     %% VPC
     VPC["VPC<br/>(172.31.0.0/16)"] 
