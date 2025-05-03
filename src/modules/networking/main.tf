@@ -55,7 +55,7 @@ resource "aws_eip" "to_nat" {
   tags = merge(
     var.tags,
     {
-      Name = "rds-private-eip-${count.index + 1}"
+      Name = "ec2-public-eip-${count.index + 1}"
     }
   ) 
 }
