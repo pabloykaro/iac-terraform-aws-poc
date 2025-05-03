@@ -55,7 +55,7 @@ resource "aws_eip" "to_nat" {
   tags = merge(
     var.tags,
     {
-      Name = "ec2-public-eip-${count.index + 1}"
+      Name = "eip-to-nat-${count.index + 1}"
     }
   ) 
 }
@@ -67,7 +67,7 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "rds-private-nat-${count.index + 1}"
+      Name = "nat-gateway-${count.index + 1}"
     }
   )
   depends_on = [aws_internet_gateway.main, aws_eip.to_nat]
