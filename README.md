@@ -171,7 +171,6 @@ O comando `terraform destroy` remove todos os recursos gerenciados pelo Terrafor
    ```bash
    export AWS_ACCESS_KEY_ID="sua-access-key"
    export AWS_SECRET_ACCESS_KEY="sua-secret-key"
-   export AWS_REGION="sua-regiao"
    ```
 
 2. Inicialize o projeto:
