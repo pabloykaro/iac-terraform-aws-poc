@@ -8,6 +8,8 @@ locals {
       rds_private_subnets = ["172.31.101.0/24", "172.31.102.0/24"]
       rds_instance_class  = "db.t3.micro"
       rds_storage         = 20
+      key_rds_db_username = "dev_rds_username"
+      key_rds_db_password = "dev_rds_password"
       tags = {
         Environment = "development"
       }
@@ -18,6 +20,8 @@ locals {
       rds_private_subnets = ["172.32.101.0/24", "172.32.102.0/24"]
       rds_instance_class  = "db.t3.small"
       rds_storage         = 50
+      key_rds_db_username = "staging_rds_username"
+      key_rds_db_password = "staging_rds_password"
       tags = {
         Environment = "staging"
       }
@@ -28,6 +32,8 @@ locals {
       rds_private_subnets = ["172.33.101.0/24", "172.33.102.0/24"]
       rds_instance_class  = "db.t3.medium"
       rds_storage         = 100
+      key_rds_db_username = "production_rds_username"
+      key_rds_db_password = "production_rds_password"
       tags = {
         Environment = "production"
       }
