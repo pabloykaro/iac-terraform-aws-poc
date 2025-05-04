@@ -44,8 +44,6 @@ locals {
 
   tags = merge(
     var.tags,
-    {
-      Environment = "development"
-    }
+    env_config.tags
   )
 }
