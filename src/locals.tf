@@ -1,6 +1,6 @@
 locals {
   env = terraform.workspace == "default" ? "development" : terraform.workspace
-  
+
   environment_configs = {
     development = {
       vpc_cidr            = "172.31.0.0/16"
@@ -36,7 +36,7 @@ locals {
 
   env_config = local.environment_configs[local.env]
 
-    tags = merge(
+  tags = merge(
     var.tags,
     {
       Environment = "development"
