@@ -18,7 +18,7 @@ resource "aws_db_instance" "rds_instance" {
   allocated_storage     = var.rds_allocated_storage
   username              = var.rds_username
   password              = var.rds_password
-  port                  = 3306
+  port                  = var.rds_port
   vpc_security_group_ids = var.rds_security_group_ids
   db_subnet_group_name  = aws_db_subnet_group.rds_subnet_group.name
   skip_final_snapshot   = true

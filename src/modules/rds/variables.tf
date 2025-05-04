@@ -36,3 +36,9 @@ variable "rds_security_group_ids" {
   description = "IDs do security group do RDS"
   type        = list(string)
 }
+
+variable "rds_port" {
+  description = "Porta para conexão ao RDS"
+  type        = number
+  default     = 3306
+}
