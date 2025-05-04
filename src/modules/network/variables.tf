@@ -2,11 +2,11 @@ variable "vpc_cidr" {
   type = string
 }
 
-variable "ec2_public_subnets" {
+variable "network_public_subnets" {
   type = list(string)
 }
 
-variable "rds_private_subnets" {
+variable "network_private_subnets" {
   type = list(string)
 }
 

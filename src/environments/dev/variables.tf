@@ -22,18 +22,6 @@ variable "rds_private_subnets" {
   default     = ["172.31.101.0/24", "172.31.102.0/24"]
 }
 
-variable "rds_instance_class" {
-  description = "Classe da instância RDS"
-  type        = string
-  default     = "db.t3.micro"
-}
-
-variable "rds_storage" {
-  description = "Armazenamento inicial do RDS em GB"
-  type        = number
-  default     = 20
-}
-
 variable "tags" {
   description = "Tags"
   type        = map(string)
