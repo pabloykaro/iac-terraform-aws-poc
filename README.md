@@ -169,9 +169,9 @@ O comando `terraform destroy` remove todos os recursos gerenciados pelo Terrafor
 
 1. Configure suas credenciais da AWS:
    ```bash
-   export TF_AWS_ACCESS_KEY_ID="sua-access-key"
-   export TF_AWS_SECRET_ACCESS_KEY="sua-secret-key"
-   export TF_AWS_REGION="sua-regiao"
+   export AWS_ACCESS_KEY_ID="sua-access-key"
+   export AWS_SECRET_ACCESS_KEY="sua-secret-key"
+   export AWS_REGION="sua-regiao"
    ```
 
 2. Inicialize o projeto:
