@@ -1,19 +1,19 @@
 module "network" {
-  source                  = "../../modules/network"
-  vpc_cidr                = locals.env_config.vpc_cidr
-  network_public_subnets  = locals.env_config.network_public_subnets
-  network_private_subnets = locals.env_config.network_private_subnets
-  tags                    = locals.tags
+  source                  = "./modules/network"
+  vpc_cidr                = local.env_config.vpc_cidr
+  network_public_subnets  = local.env_config.ec2_public_subnets
+  network_private_subnets = local.env_config.rds_private_subnets
+  tags                    = local.tags
 }
 
 module "datasource" {
-  source              = "../../modules/data"
-  key_rds_db_username = locals.env_config.key_rds_db_username
-  key_rds_db_password = locals.env_config.key_rds_db_password
+  source              = "./modules/data"
+  key_rds_db_username = local.env_config.key_rds_db_username
+  key_rds_db_password = local.env_config.key_rds_db_password
 }
 
 module "rds" {
-  source                 = "../../modules/rds"
+  source                 = "./modules/rds"
   subnet_ids             = module.network.network_private_subnet_ids
   rds_username           = module.datasource.data_rds_db_username
   rds_password           = module.datasource.data_rds_db_password

@@ -44,6 +44,6 @@ locals {
 
   tags = merge(
     var.tags,
-    env_config.tags
+    local.env_config.tags
   )
 }
